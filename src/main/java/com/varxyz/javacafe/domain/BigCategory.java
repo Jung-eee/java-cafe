@@ -9,4 +9,7 @@ public class BigCategory {
 	private long bid;
 	private String bigCategoryName;
 	
+	public BigCategory(String bigCategoryName) {
+		this.bigCategoryName = bigCategoryName;
+	}
 }

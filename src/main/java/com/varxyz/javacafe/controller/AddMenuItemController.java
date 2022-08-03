@@ -2,6 +2,8 @@ package com.varxyz.javacafe.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,10 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.varxyz.javacafe.domain.BigCategory;
 import com.varxyz.javacafe.domain.Image;
 import com.varxyz.javacafe.domain.MenuItem;
 import com.varxyz.javacafe.domain.MenuItemCommand;
@@ -31,6 +35,20 @@ public class AddMenuItemController {
 		return "menuitem/add_menuitem";
 	}
 	
+	@GetMapping("/main")
+	public String toMain() {
+		return "main";
+	}
+	
+	@ModelAttribute("catgegoryProvider")
+	public List<CategoryProvider> getCategoryProviderList() {
+		List<CategoryProvider> list = menuItemService.getCategoryProvider();
+		return list;
+		
+	}
+	
+	
+	
 	@PostMapping("/menuitem/add_menuitem")
 	public String addMenuItem(Model model, HttpServletRequest request, @RequestParam("report") MultipartFile report) throws IOException {
 //		model.addAttribute("menuItemCommand", menuItemCommand);
@@ -40,9 +58,9 @@ public class AddMenuItemController {
 		String bigCategoryName = request.getParameter("bigCategoryName");
 		menuItem.setMenuName(menuName);
 		menuItem.setMenuPrice(menuPrice);
-		menuItem.setBigCategoryName(bigCategoryName);
+		menuItem.setBigCategoryName(new BigCategory(bigCategoryName));
 		
-		String filePath = "C:\\ncs\\eclipse\\workspace\\java-cafe\\src\\main\\webapp\\resources\\menuImg";
+		String filePath = "C:\\ncs\\eclipse\\workspace\\java-cafe\\src\\main\\webapp\\resources\\menuImg\\";
 		
         //파일명
         String originalFile = report.getOriginalFilename();
@@ -64,6 +82,7 @@ public class AddMenuItemController {
         img.setImgUrl(filePath);
         menuItemService.addMenuItem(menuItem, img);
         request.setAttribute("menuitem", menuItem);
+        request.setAttribute("imgName", storedFileName);
         
         //파일을 저장하기 위한 파일 객체 생성
         File file = new File(filePath + storedFileName);

@@ -13,13 +13,14 @@
 		<h3 class="jumbotron" >상품 등록이 완료 되었습니다.</h3>
 		<div class="form-group productInfo">
 				<div>
-					<label>상품명</label> : ${menuitem.menuName}
+					<label>상품명</label> : ${menuitem.menuName}<br>
 				</div>
+				
 				<div>
 					<label>상품가격</label> : ${menuitem.menuPrice}
 				</div>
 				<div>
-					<label>상품분류</label> : ${menuitem.bigCategoryName}
+					<label>상품분류</label> : ${menuitem.bigCategoryName.bigCategoryName}
 				</div>
 					<button class="btn btn-default" onclick='location.href="<c:url value='add_menuitem'/>"' >상품 등록으로 돌아가기</button>
 		</div>
