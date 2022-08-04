@@ -19,9 +19,6 @@
 				<div>
 					<label>상품가격</label> : ${menuitem.menuPrice}
 				</div>
-				<div>
-					<label>상품분류</label> : ${menuitem.bigCategoryName.bigCategoryName}
-				</div>
 					<button class="btn btn-default" onclick='location.href="<c:url value='add_menuitem'/>"' >상품 등록으로 돌아가기</button>
 		</div>
 	</div>

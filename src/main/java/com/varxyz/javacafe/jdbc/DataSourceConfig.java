@@ -5,7 +5,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import com.varxyz.javacafe.dao.KioskDao;
 import com.varxyz.javacafe.dao.MenuItemDao;
+import com.varxyz.javacafe.servive.KioskServiceImp;
 import com.varxyz.javacafe.servive.MenuItemServiceImp;
 
 
@@ -41,16 +43,16 @@ public class DataSourceConfig {
 		return new MenuItemDao(dataSource());
 	}
 	
-//	@Bean
-//	public CustomerDao CustomerDao() {
-//	return new CustomerDao(dataSource());
-//}
-//	
-//	@Bean
-//	public CustomerServiceImpl customerService() {
-//		return new CustomerServiceImpl();
-//	}
-//	
+	@Bean
+	public KioskServiceImp kioskService() {
+	return new KioskServiceImp();
+	}
+	
+	@Bean
+	public KioskDao kioskDao() {
+		return new KioskDao(dataSource());
+	}
+	
 //	@Bean
 //	public AccountServiceImpl accountService() {
 //		return new AccountServiceImpl();

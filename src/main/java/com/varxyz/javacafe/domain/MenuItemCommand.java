@@ -1,5 +1,7 @@
 package com.varxyz.javacafe.domain;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,5 +10,7 @@ import lombok.Setter;
 public class MenuItemCommand {
 	private String bigCategoryName;
 	private String menuName;
-	private double menuPrice;
+	private int menuPrice;
+	private long categoryId;
+	private MultipartFile files; 
 }

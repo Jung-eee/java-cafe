@@ -11,6 +11,7 @@ public interface menuItemService {
 	void  addMenuItem(MenuItem menuItem, Image img);
 	List<MenuItem> viewAllMenu();
 	List<CategoryProvider> getCategoryProvider ();
+	MenuItem getMenuItemByImgName(String imgName);
 
 
 }

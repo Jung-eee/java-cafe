@@ -35,20 +35,38 @@ CREATE TABLE Image(
 	CONSTRAINT Image_menuFk_FK FOREIGN KEY (menuFk) REFERENCES MenuItem(mid)
 )AUTO_INCREMENT 5001;
 
+CREATE TABLE Cart(
+	cid			BIGINT			PRIMARY KEY AUTO_INCREMENT,
+	menuName	VARCHAR(20)     NOT NULL,
+	menuPrice	INT				NOT NULL,
+	quantity	INT				NOT NULL,
+	imgName		VARCHAR(200)	NOT NULL
+)AUTO_INCREMENT = 2001;
+
+SELECT * FROM Cart;
 
 SELECT * FROM Image;
 
 alter table MenuItem add bigCategoryName VARCHAR(10)  NOT NULL;
 
+alter table MenuItem add description VARCHAR(100)  NOT NULL;
+
 alter table MenuItem change ihb	 ihd char(1) NOT NULL;
+
+alter table MenuItem change menuPrice menuPrice INT NOT NULL;
 
 ALTER TABLE MenuItem convert to charset utf8;
 
 alter table MenuItem drop ihd;
 
+alter table MenuItem drop bigCategoryName;
+
 alter table MenuItem drop quantity;
 
+delete from MenuItem where mid=3001;
 delete from MenuItem where mid=3002;
+delete from MenuItem where mid=3003;
+delete from MenuItem where mid=3004;
 
 DROP TABLE Image;
 

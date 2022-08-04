@@ -25,15 +25,14 @@ private JdbcTemplate jdbcTemplate;
 	}
 	
 	public long addMenuItem(MenuItem menuItem) {
-		String sql = "INSERT INTO MenuItem (bigCategoryFk, bigCategoryName, menuName, menuPrice)"
-				+ " VALUES(?, ?, ?, ?)";
+		String sql = "INSERT INTO MenuItem (bigCategoryFk, menuName, menuPrice)"
+				+ " VALUES(?, ?, ?)";
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 		PreparedStatementCreator creator = (connection) -> {
 			PreparedStatement pstmt = connection.prepareStatement(sql, new String[] {"mId"});
-			pstmt.setLong(1, 1001);
-			pstmt.setString(2, menuItem.getBigCategoryName().getBigCategoryName());
-			pstmt.setString(3, menuItem.getMenuName());
-			pstmt.setDouble(4, menuItem.getMenuPrice());
+			pstmt.setLong(1, menuItem.getBigCategoryName().getBid());
+			pstmt.setString(2, menuItem.getMenuName());
+			pstmt.setDouble(3, menuItem.getMenuPrice());
 			
 			return pstmt;
 		};
@@ -99,4 +98,41 @@ private JdbcTemplate jdbcTemplate;
 		
 	}
 
+	public List<MenuItem> viewAllMenu(long categoryId) {
+		String sql = "SELECT m.menuName, m.menuPrice, b.BigCategoryName,"
+				+ " i.imgUrl, i.imgName FROM MenuItem m INNER JOIN Image i ON m.mId = i.menuFk"
+				+ " INNER JOIN BigCategory b ON b.bid = m.bigCategoryFk WHERE m.bigCategoryFk=?";
+		
+		return jdbcTemplate.query(sql, new RowMapper<MenuItem>() {
+
+			@Override
+			public MenuItem mapRow(ResultSet rs, int rowNum) throws SQLException {
+				MenuItem menuItem = new MenuItem(rs.getString("menuName"), rs.getInt("menuPrice")
+						, new BigCategory(rs.getString("BigCategoryName")),
+								new Image(rs.getString("imgUrl"), rs.getString("imgName")));
+				return menuItem;
+			}
+			
+		}, categoryId);
+	}
+	public MenuItem getMenuItemByImgName(String imgName) {
+	      String sql = "SELECT m.mid, m.lcFk, m.menuName, m.menuPrice, m.description, i.imgUrl, i.imgName FROM MenuItem m"
+	            + " INNER JOIN Image i ON m.mid = i.bigCategoryFk WHERE i.imgName=?";
+	      
+	      return jdbcTemplate.queryForObject(sql, new RowMapper<MenuItem>() {
+
+	         @Override
+	         public MenuItem mapRow(ResultSet rs, int rowNum) throws SQLException {
+	            MenuItem menuItem = new MenuItem();
+	            menuItem.setMid(rs.getLong("mid"));
+	            menuItem.setBigCategoryFk(rs.getLong("bigCategoryFk"));
+	            menuItem.setMenuName(rs.getString("menuName"));
+	            menuItem.setMenuPrice(rs.getInt("menuPrice"));
+	            menuItem.setDescription(rs.getString("description"));
+	            menuItem.setImage(new Image(rs.getString("imgUrl"), rs.getString("imgName")));
+	            return menuItem;
+	         }
+	         
+	      }, imgName);
+	   }
 }

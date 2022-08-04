@@ -9,16 +9,11 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Cart {
-	private List<MenuItemSet> menuItemSetLsit = new ArrayList<>();
+	private long cid;
+	private String menuName;
+	private int menuPrice;
+	private int quantity;
+	private String imgName;
+		
 	
-	public void up(MenuItemSet menuItemSet) {
-		for (MenuItemSet is : menuItemSetLsit) {
-			if (MenuItemSet.getMenuItem().getMenuName() == is.getMenuItem().getMenuName()){
-				is.setQuantity(is.getQuantity() + menuItemSet.getQuantity());;
-				return;
-				
-			}
-		}
-		menuItemSet.add(menuItemSet);
-	}
 }

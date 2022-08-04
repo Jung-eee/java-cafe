@@ -31,13 +31,13 @@ public class AddMenuItemController {
 	MenuItemServiceImp menuItemService;
 	
 	@GetMapping("/menuitem/add_menuitem")
-	public String addMenuItemForm() {
+	public String addMenuItemForm(MenuItemCommand menuItemCommand) {
 		return "menuitem/add_menuitem";
 	}
 	
-	@GetMapping("/main")
+	@GetMapping("/menuitem/view_menu1")
 	public String toMain() {
-		return "main";
+		return "menuitem/view_menu";
 	}
 	
 	@ModelAttribute("catgegoryProvider")
@@ -50,15 +50,12 @@ public class AddMenuItemController {
 	
 	
 	@PostMapping("/menuitem/add_menuitem")
-	public String addMenuItem(Model model, HttpServletRequest request, @RequestParam("report") MultipartFile report) throws IOException {
-//		model.addAttribute("menuItemCommand", menuItemCommand);
-		MenuItem menuItem = new MenuItem();
-		String menuName = request.getParameter("menuName");
-		double menuPrice = Double.parseDouble(request.getParameter("menuPrice"));
-		String bigCategoryName = request.getParameter("bigCategoryName");
-		menuItem.setMenuName(menuName);
-		menuItem.setMenuPrice(menuPrice);
-		menuItem.setBigCategoryName(new BigCategory(bigCategoryName));
+	public String addMenuItem(MenuItemCommand menuItemCommand, Model model, HttpServletRequest request, @RequestParam("report") MultipartFile report) throws IOException {
+		model.addAttribute("menuItemCommand", menuItemCommand);
+		MenuItem menuItem = new MenuItem();		
+		menuItem.setMenuName(menuItemCommand.getMenuName());
+		menuItem.setMenuPrice(menuItemCommand.getMenuPrice());
+		menuItem.setBigCategoryName(new BigCategory(menuItemCommand.getCategoryId()));
 		
 		String filePath = "C:\\ncs\\eclipse\\workspace\\java-cafe\\src\\main\\webapp\\resources\\menuImg\\";
 		

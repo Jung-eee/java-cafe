@@ -50,6 +50,13 @@ input {
   width: 15px; 
   height: 45px;
 }
+button {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   background-color: transparent;
+   border: none;
+}
 button:last-child {
   margin-right: 0;
 }
@@ -196,4 +203,7 @@ button:last-child {
 .header_n {
 	margin-top: 10px;
 	display: inline-block;
+}
+li {
+	list-style: none;
 }

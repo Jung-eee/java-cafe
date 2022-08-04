@@ -29,6 +29,15 @@ public class MenuItemServiceImp implements menuItemService {
 		return menuItemDao.getCategoryProvider();
 	}
 
+	public List<MenuItem> viewAllMenu(long categoryId) {
+		return menuItemDao.viewAllMenu(categoryId);
+	}
+
+	@Override
+	public MenuItem getMenuItemByImgName(String imgName) {
+		return menuItemDao.getMenuItemByImgName(imgName);
+	}
+
 	
 
 	
