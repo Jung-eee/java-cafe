@@ -13,4 +13,6 @@ public class MenuItemCommand {
 	private int menuPrice;
 	private long categoryId;
 	private MultipartFile files; 
+	private String imgName;
+	private String description;
 }

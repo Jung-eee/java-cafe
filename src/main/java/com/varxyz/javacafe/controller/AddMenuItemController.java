@@ -56,6 +56,7 @@ public class AddMenuItemController {
 		menuItem.setMenuName(menuItemCommand.getMenuName());
 		menuItem.setMenuPrice(menuItemCommand.getMenuPrice());
 		menuItem.setBigCategoryName(new BigCategory(menuItemCommand.getCategoryId()));
+		menuItem.setDescription(menuItemCommand.getDescription());
 		
 		String filePath = "C:\\ncs\\eclipse\\workspace\\java-cafe\\src\\main\\webapp\\resources\\menuImg\\";
 		

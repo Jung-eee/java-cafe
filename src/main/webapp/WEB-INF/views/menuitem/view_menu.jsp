@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>모든 메뉴 보기</title>
+<link rel="stylesheet" href="<c:url value='/resources/css/customize.css' />">
+<link rel="stylesheet" href="<c:url value='/resources/css/main.css' />">
 </head>
 <body>
 	<div class="view_container">

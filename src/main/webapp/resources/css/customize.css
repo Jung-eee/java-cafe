@@ -27,18 +27,16 @@ header {
 }
 
 input {
-  width: 110px;
+  width: 220px;
   height: 40px;
-  border-radius: 5px;
-  background: white;
-  border: 2px solid salmon;
+  margin-top: 5px;
 }
 .carousel {
   margin-bottom: 50px;
 }
 .form-control {
   border: 0;
-  border-bottom: 2px solid white;
+  border: 2px solid wheat;
   border-radius: 0;
 }
 
@@ -58,7 +56,7 @@ button {
    border: none;
 }
 button:last-child {
-  margin-right: 0;
+  margin-right: 20px;
 }
 .no-padding{
 	padding: 0;
@@ -207,3 +205,24 @@ button:last-child {
 li {
 	list-style: none;
 }
+.menuItem_ul{
+      display: flex;
+      width: 70%;
+      min-height: 900px;
+      margin: 10px auto;
+      flex-wrap: wrap;
+}
+.nav > li {
+   margin-right: 50px;
+} 
+.nav {
+	display: flex;
+	justify-content: center;
+}
+.font {
+	font-size: 30px;
+}
+.co {
+	color: burlywood;
+}
+

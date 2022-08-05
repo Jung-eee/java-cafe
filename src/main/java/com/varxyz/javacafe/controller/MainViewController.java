@@ -23,16 +23,7 @@ public class MainViewController {
 	@Autowired
 	MenuItemServiceImp menuItemService;
 	
-	@GetMapping("/main")
-	public String viewMenu() {
-		return "main";
-	}
 	
-	@RequestMapping(value = "/requestObject", method = { RequestMethod.POST })
-	@ResponseBody
-	public List<MenuItem> viewAllMenu(@RequestBody MenuItemCommand menuItemCommand){
-		List<MenuItem> list = menuItemService.viewAllMenu(menuItemCommand.getCategoryId());
-		return list;
-	}
+	
 
 }

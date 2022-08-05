@@ -61,12 +61,19 @@ alter table MenuItem drop ihd;
 
 alter table MenuItem drop bigCategoryName;
 
-alter table MenuItem drop quantity;
+alter table MenuItem drop description;
 
-delete from MenuItem where mid=3001;
-delete from MenuItem where mid=3002;
-delete from MenuItem where mid=3003;
-delete from MenuItem where mid=3004;
+delete from Cart where cid=2001;
+delete from Cart where cid=2002;
+delete from Cart where cid=2003;
+delete from Image where imgId=5054;
+delete from Image where imgId=5055;
+delete from Image where imgId=5056;
+delete from MenuItem where mid=3045;
+delete from MenuItem where mid=3046;
+delete from MenuItem where mid=3047;
+delete from MenuItem where mid=3048;
+
 
 DROP TABLE Image;
 
