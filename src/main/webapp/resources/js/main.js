@@ -77,6 +77,8 @@ $('.si').on('click', function(){
 };
 
  $('.remove').on("click", function(){
+	let imgName = $(this).next().attr("src").split("/")[4]
+	console.log(imgName)
 	 $(this).parents(".cart_content").remove();
 	 var total = $(".total_price")
    var sum = 0
@@ -86,6 +88,23 @@ $('.si').on('click', function(){
       sum += Number(money)
    })
    total.text(sum + "원")
+   $.ajax({
+            url: "requestDelete",
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            dataType: "text",
+            data: JSON.stringify({
+         'imgName': imgName
+         }),
+           success: function(data){
+            console.log(JSON.parse(data))
+          },
+          error: function(){
+              alert("simpleWithObject err");
+          }
+    });
+   $(this).parents(".cart_content").remove()
+   
 })
  
 

@@ -11,6 +11,7 @@ public interface KioskService {
 	int upCart(Cart cart);
 	List<Cart> getCart();
 	int pay(Cart cart);
-	
+	boolean deleteThis(String imgName);
+	int deleteAll();
 	
 }

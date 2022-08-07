@@ -45,12 +45,12 @@
    <div class="cart-container">
    <c:forEach var="cart" items="${cartList}">
          <div class="cart_content">
+            <span class="remove">X</span>
             <img src="/java-cafe/resources/menuImg/${cart.imgName}" style="width: 150px; height: 150px;">
             <div class="cart_content_text">
                <span class="cart_menuName">${cart.menuName}</span>
                <span class="cart_menuPrice">${cart.menuPrice * cart.quantity}원</span>
                <span class="cart_quantity">${cart.quantity}개</span>
-               <span class="remove">X</span>
             </div>
          </div>
       </c:forEach>

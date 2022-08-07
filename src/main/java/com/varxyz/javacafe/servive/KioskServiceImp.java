@@ -50,5 +50,15 @@ public class KioskServiceImp  implements KioskService{
 		return kioskDao.pay(cart);
 		
 	}
+	
+	@Override
+	public boolean deleteThis(String imgName) {
+		return kioskDao.deleteThis(imgName);
+	}
+	
+	@Override
+	public int deleteAll() {
+		return kioskDao.deleteAll();
+	}
 
 }

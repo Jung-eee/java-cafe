@@ -114,4 +114,26 @@ private JdbcTemplate jdbcTemplate;
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	public boolean deleteThis(String imgName) {
+	      String sql = "DELETE FROM Cart WHERE imgName = ?";
+	      boolean result = false;
+	      try {
+	         jdbcTemplate.update(sql, imgName);
+	         result = true;
+	         return result;
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	         return result;
+	      }
+	   }
+	
+	public int deleteAll() {
+	      String sql = "DELETE FROM Cart";
+	      try {
+	         jdbcTemplate.update(sql);
+	         return 1;
+	      } catch (Exception e) {
+	         return 0;
+	      }
+	   }
 }

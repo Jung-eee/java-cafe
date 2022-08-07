@@ -58,7 +58,8 @@ public class AddMenuItemController {
 		menuItem.setBigCategoryName(new BigCategory(menuItemCommand.getCategoryId()));
 		menuItem.setDescription(menuItemCommand.getDescription());
 		
-		String filePath = "C:\\ncs\\eclipse\\workspace\\java-cafe\\src\\main\\webapp\\resources\\menuImg\\";
+//		String filePath = "C:\\ncs\\eclipse\\workspace\\java-cafe\\src\\main\\webapp\\resources\\menuImg\\";
+		String filePath = "C:\\workspace\\java-cafe\\src\\main\\webapp\\resources\\menuImg\\";
 		
         //파일명
         String originalFile = report.getOriginalFilename();

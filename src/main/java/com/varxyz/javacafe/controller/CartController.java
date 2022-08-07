@@ -42,6 +42,12 @@ public class CartController {
 		return "kiosk/main";
 	}
 	
+	@PostMapping("/kiosk/didpay")
+	public String didPay() {
+		kioskService.deleteAll();
+		return "redirect:/kiosk/main";
+	}
+	
 	
 //	@GetMapping("/kiosk/add_cart")
 //	public String addCart(HttpServletRequest request, Model model) {
