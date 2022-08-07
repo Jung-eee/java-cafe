@@ -57,7 +57,7 @@ alter table MenuItem change menuPrice menuPrice INT NOT NULL;
 
 ALTER TABLE MenuItem convert to charset utf8;
 
-alter table MenuItem drop ihd;
+alter table MenuItem drop des;
 
 alter table MenuItem drop bigCategoryName;
 
